@@ -1,0 +1,320 @@
+﻿@model ShoeShop.Models.SanPham
+@using System.Text
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@Html.ActionLink("Trở về trang trước", "ProductManage", null, new { @class = "btn btn-primary" })
+<div class="container">
+
+
+    <div class="page-header">
+        <h2>@Model.TenSanPham</h2>
+    </div>
+
+    <div class="timeline">
+
+        <div class="line text-muted"></div>
+
+
+        <div class="separator text-muted">
+            <time>@DateTime.Now</time>
+        </div>
+
+        <article class="panel panel-default panel-outline">
+
+            <div class="panel-heading icon">
+                <i class="glyphicon glyphicon-picture"></i>
+            </div>
+
+            <div class="panel-body">
+                @foreach (var item in Model.SanPhamHinhs)
+                {
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <img class="img-responsive" src="~/Photos/@item.TenHinh" />
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </article>
+
+        <article class="panel panel-primary">
+
+
+            <div class="panel-heading icon">
+                <i class="glyphicon glyphicon-plus"></i>
+            </div>
+
+            <div class="panel-heading">
+                <h2 class="panel-title">Mô tả</h2>
+            </div>
+
+            <div class="panel-body">
+                @if (@Model.Mota != null)
+                {
+                    @Model.Mota
+                }
+                else
+                {
+                    <div class="alert alert-danger" role="alert">Không có mô tả cho sản phẩm này</div>
+                }
+            </div>
+
+            <div class="panel-footer">
+                <small></small>
+            </div>
+
+
+        </article>
+
+        <article class="panel panel-success">
+
+
+            <div class="panel-heading icon">
+                <i class="glyphicon glyphicon-plus"></i>
+            </div>
+
+            <div class="panel-heading">
+                <h2 class="panel-title">Thông tin sản phẩm - @Model.TenSanPham </h2>
+            </div>
+
+            <div class="panel-body">
+                Mã Sản Phẩm: @Model.MaSanPham
+            </div>
+          
+            <ul class="list-group">
+
+                <li class="list-group-item">Giá bán : @Model.GiaBan VND</li>
+                <li class="list-group-item">Nhà sản xuất : @Model.NhaSanXuat</li>
+                <li class="list-group-item">Số lần xem : @Model.SoLanXem</li>
+                <li class="list-group-item">Chủng loại : @Model.Loai.Ten</li>
+                <li class="list-group-item">Size hiện hành : 
+                    @if (Model.SanPhamSizes.Count > 0)
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        foreach (var item in Model.SanPhamSizes)
+                        {
+                            sb.AppendFormat(", {0}", item.Size.TenSize);
+                        }
+                        @sb.ToString().Remove(0, 2)
+                    }
+                    else
+                    {
+                        <p>chua co size</p>
+                    }
+                </li>
+                <li class="list-group-item">
+
+                    <div class="material-switch">
+                        Trạng thái Sản Phẩm (Ẩn Đỏ Hiện Xám):
+                        @if (Model.Deleted == false)
+                        {
+                            <input id="someSwitchOptionDanger" name="someSwitchOption001" type="checkbox"  disabled="disabled"/>
+                            <label for="someSwitchOptionDanger" class="label-danger"></label>
+                        }
+                        else
+                        {
+                            <input id="someSwitchOptionDanger" name="someSwitchOption001" type="checkbox" checked="checked" disabled="disabled" />
+                            <label for="someSwitchOptionDanger" class="label-danger"></label>
+                        }
+
+                    </div>
+                </li>
+            </ul>
+
+        </article>
+
+        <article class="panel panel-info panel-outline">
+
+            <div class="panel-heading icon">
+                <i class="glyphicon glyphicon-info-sign"></i>
+            </div>
+
+            <div class="panel-body">
+                That is all.
+            </div>
+
+        </article>
+
+
+    </div>
+
+
+</div>
+
+<style type="text/css">
+    .timeline {
+        position: relative;
+        padding: 21px 0px 10px;
+        margin-top: 4px;
+        margin-bottom: 30px;
+    }
+
+        .timeline .line {
+            position: absolute;
+            width: 4px;
+            display: block;
+            background: currentColor;
+            top: 0px;
+            bottom: 0px;
+            margin-left: 30px;
+        }
+
+        .timeline .separator {
+            border-top: 1px solid currentColor;
+            padding: 5px;
+            padding-left: 40px;
+            font-style: italic;
+            font-size: .9em;
+            margin-left: 30px;
+        }
+
+        .timeline .line::before {
+            top: -4px;
+        }
+
+        .timeline .line::after {
+            bottom: -4px;
+        }
+
+        .timeline .line::before,
+        .timeline .line::after {
+            content: '';
+            position: absolute;
+            left: -4px;
+            width: 12px;
+            height: 12px;
+            display: block;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .timeline .panel {
+            position: relative;
+            margin: 10px 0px 21px 70px;
+            clear: both;
+        }
+
+            .timeline .panel::before {
+                position: absolute;
+                display: block;
+                top: 8px;
+                left: -24px;
+                content: '';
+                width: 0px;
+                height: 0px;
+                border: inherit;
+                border-width: 12px;
+                border-top-color: transparent;
+                border-bottom-color: transparent;
+                border-left-color: transparent;
+            }
+
+            .timeline .panel .panel-heading.icon * {
+                font-size: 20px;
+                vertical-align: middle;
+                line-height: 40px;
+            }
+
+            .timeline .panel .panel-heading.icon {
+                position: absolute;
+                left: -59px;
+                display: block;
+                width: 40px;
+                height: 40px;
+                padding: 0px;
+                border-radius: 50%;
+                text-align: center;
+                float: left;
+            }
+
+        .timeline .panel-outline {
+            border-color: transparent;
+            background: transparent;
+            box-shadow: none;
+        }
+
+            .timeline .panel-outline .panel-body {
+                padding: 10px 0px;
+            }
+
+            .timeline .panel-outline .panel-heading:not(.icon),
+            .timeline .panel-outline .panel-footer {
+                display: none;
+            }
+
+    .img-rounded {
+        float: left;
+    }
+
+        .img-rounded img {
+            width: 150px;
+            height: 200px;
+        }
+
+    .material-switch > input[type="checkbox"] {
+        display: none;
+    }
+
+    .material-switch > label {
+        cursor: pointer;
+        height: 0px;
+        position: relative;
+        width: 40px;
+    }
+
+        .material-switch > label::before {
+            background: rgb(0, 0, 0);
+            box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            content: '';
+            height: 16px;
+            margin-top: -8px;
+            position: absolute;
+            opacity: 0.3;
+            transition: all 0.4s ease-in-out;
+            width: 40px;
+        }
+
+        .material-switch > label::after {
+            background: rgb(255, 255, 255);
+            border-radius: 16px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+            content: '';
+            height: 24px;
+            left: -4px;
+            margin-top: -8px;
+            position: absolute;
+            top: -4px;
+            transition: all 0.3s ease-in-out;
+            width: 24px;
+        }
+
+    .material-switch > input[type="checkbox"]:checked + label::before {
+        background: inherit;
+        opacity: 0.5;
+    }
+
+    .material-switch > input[type="checkbox"]:checked + label::after {
+        background: inherit;
+        left: 20px;
+    }
+
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
+</style>

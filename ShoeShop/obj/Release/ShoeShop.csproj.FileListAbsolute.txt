@@ -1,0 +1,117 @@
+D:\Study\ShoeShop\ShoeShop\bin\ShoeShop.dll.config
+D:\Study\ShoeShop\ShoeShop\bin\ShoeShop.dll
+D:\Study\ShoeShop\ShoeShop\bin\ShoeShop.pdb
+D:\Study\ShoeShop\ShoeShop\bin\Antlr3.Runtime.dll
+D:\Study\ShoeShop\ShoeShop\bin\EntityFramework.dll
+D:\Study\ShoeShop\ShoeShop\bin\EntityFramework.SqlServer.dll
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.Owin.dll
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.dll
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.Google.dll
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.Web.Infrastructure.dll
+D:\Study\ShoeShop\ShoeShop\bin\Newtonsoft.Json.dll
+D:\Study\ShoeShop\ShoeShop\bin\Owin.dll
+D:\Study\ShoeShop\ShoeShop\bin\PagedList.dll
+D:\Study\ShoeShop\ShoeShop\bin\PagedList.Mvc.dll
+D:\Study\ShoeShop\ShoeShop\bin\System.Web.Helpers.dll
+D:\Study\ShoeShop\ShoeShop\bin\System.Web.Mvc.dll
+D:\Study\ShoeShop\ShoeShop\bin\System.Web.Optimization.dll
+D:\Study\ShoeShop\ShoeShop\bin\System.Web.Razor.dll
+D:\Study\ShoeShop\ShoeShop\bin\System.Web.WebPages.Deployment.dll
+D:\Study\ShoeShop\ShoeShop\bin\System.Web.WebPages.dll
+D:\Study\ShoeShop\ShoeShop\bin\System.Web.WebPages.Razor.dll
+D:\Study\ShoeShop\ShoeShop\bin\WebGrease.dll
+D:\Study\ShoeShop\ShoeShop\bin\EntityFramework.xml
+D:\Study\ShoeShop\ShoeShop\bin\EntityFramework.SqlServer.xml
+D:\Study\ShoeShop\ShoeShop\bin\PagedList.xml
+D:\Study\ShoeShop\ShoeShop\bin\PagedList.Mvc.xml
+D:\Study\ShoeShop\ShoeShop\bin\System.Web.Helpers.xml
+D:\Study\ShoeShop\ShoeShop\bin\System.Web.Mvc.xml
+D:\Study\ShoeShop\ShoeShop\bin\System.Web.Optimization.xml
+D:\Study\ShoeShop\ShoeShop\bin\System.Web.Razor.xml
+D:\Study\ShoeShop\ShoeShop\bin\System.Web.WebPages.xml
+D:\Study\ShoeShop\ShoeShop\bin\System.Web.WebPages.Deployment.xml
+D:\Study\ShoeShop\ShoeShop\bin\System.Web.WebPages.Razor.xml
+D:\Study\ShoeShop\ShoeShop\bin\Antlr3.Runtime.pdb
+D:\Study\ShoeShop\ShoeShop\bin\Newtonsoft.Json.xml
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.Owin.xml
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.xml
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.Google.xml
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Study\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Study\ShoeShop\ShoeShop\obj\Release\ShoeShop.dll
+D:\Study\ShoeShop\ShoeShop\obj\Release\ShoeShop.pdb
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\ShoeShop.dll.config
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\ShoeShop.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\ShoeShop.pdb
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Antlr3.Runtime.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\EntityFramework.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\EntityFramework.SqlServer.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.Owin.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.Google.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.Web.Infrastructure.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Newtonsoft.Json.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Owin.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\PagedList.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\PagedList.Mvc.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\System.Web.Helpers.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\System.Web.Mvc.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\System.Web.Optimization.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\System.Web.Razor.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\System.Web.WebPages.Deployment.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\System.Web.WebPages.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\System.Web.WebPages.Razor.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\WebGrease.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\EntityFramework.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\EntityFramework.SqlServer.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\PagedList.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\PagedList.Mvc.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\System.Web.Helpers.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\System.Web.Mvc.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\System.Web.Optimization.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\System.Web.Razor.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\System.Web.WebPages.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\System.Web.WebPages.Deployment.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\System.Web.WebPages.Razor.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Antlr3.Runtime.pdb
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Newtonsoft.Json.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.Owin.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.Google.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\obj\Release\ShoeShop.csprojResolveAssemblyReference.cache
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\obj\Release\ShoeShop.dll
+E:\Bai Hoc\Source Code\ShoeShop\ShoeShop\obj\Release\ShoeShop.pdb

@@ -1,0 +1,296 @@
+﻿@model ShoeShop.Models.SanPham
+@{
+    ViewBag.Title = "Upload";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    WebGrid grid = new WebGrid(@Model.SanPhamHinhs);
+    string path = Url.Content("~/Photos/");
+}
+
+
+@using (Html.BeginForm("UploadImg", "AdminSite", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <article class="panel panel-info">
+        @Html.HiddenFor(model => model.SanPhamID)
+        <div class="panel-heading icon">
+            <i class="glyphicon glyphicon-picture"></i>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên hình</th>
+                        <th>Thứ tự hiển thị</th>
+                        <th>Ảnh</th>
+                        <th>Xóa</th>
+                    </tr>
+                </thead>
+                @foreach (var item in @Model.SanPhamHinhs)
+                {
+
+                    <tbody>
+                        <tr>
+                            <th>@item.SanPhamHinhID</th>
+                            <th>@item.TenHinh</th>
+                            <th>@item.ThuTuHienThi</th>
+                            <th><img src="~/Photos/@item.TenHinh" width="150" height="150" /></th>
+                            <th>@Html.ActionLink("X", "DeleteImg", new { id = item.SanPhamHinhID,SanPhamID=item.SanPhamID }, htmlAttributes: new { onclick = "return confirm('Bạn có chắc chắn không ?');", @class = "btn btn-circle brn-danger" })</th>
+                        </tr>
+                    </tbody>
+
+                }
+            </table>
+
+        </div>
+        <div class="panel-heading">
+            <h2 class="panel-title">Upload Hình</h2>
+        </div>
+        <div class="panel-body">
+
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-md-2">File 1:</label>
+                    <div class="col-md-10">
+                        <input type="file" name="files" id="file1" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">File 2:</label>
+                    <div class="col-md-10">
+                        <input type="file" name="files" id="file2" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">File 3:</label>
+                    <div class="col-md-10">
+                        <input type="file" name="files" id="file3" class="form-control" />
+                    </div>
+                </div>
+
+            </div>
+            <input type="hidden" name="id" value="@Model.SanPhamID" id="spID" />
+            <input type="submit" value="Upload" class="btn btn-primary btn-block" />
+        </div>
+
+    </article>
+
+ 
+}
+<style type="text/css">
+    .timeline {
+        position: relative;
+        padding: 21px 0px 10px;
+        margin-top: 4px;
+        margin-bottom: 30px;
+    }
+
+        .timeline .line {
+            position: absolute;
+            width: 4px;
+            display: block;
+            background: currentColor;
+            top: 0px;
+            bottom: 0px;
+            margin-left: 30px;
+        }
+
+        .timeline .separator {
+            border-top: 1px solid currentColor;
+            padding: 5px;
+            padding-left: 40px;
+            font-style: italic;
+            font-size: .9em;
+            margin-left: 30px;
+        }
+
+        .timeline .line::before {
+            top: -4px;
+        }
+
+        .timeline .line::after {
+            bottom: -4px;
+        }
+
+        .timeline .line::before,
+        .timeline .line::after {
+            content: '';
+            position: absolute;
+            left: -4px;
+            width: 12px;
+            height: 12px;
+            display: block;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .timeline .panel {
+            position: relative;
+            margin: 10px 0px 21px 70px;
+            clear: both;
+        }
+
+            .timeline .panel::before {
+                position: absolute;
+                display: block;
+                top: 8px;
+                left: -24px;
+                content: '';
+                width: 0px;
+                height: 0px;
+                border: inherit;
+                border-width: 12px;
+                border-top-color: transparent;
+                border-bottom-color: transparent;
+                border-left-color: transparent;
+            }
+
+            .timeline .panel .panel-heading.icon * {
+                font-size: 20px;
+                vertical-align: middle;
+                line-height: 40px;
+            }
+
+            .timeline .panel .panel-heading.icon {
+                position: absolute;
+                left: -59px;
+                display: block;
+                width: 40px;
+                height: 40px;
+                padding: 0px;
+                border-radius: 50%;
+                text-align: center;
+                float: left;
+            }
+
+        .timeline .panel-outline {
+            border-color: transparent;
+            background: transparent;
+            box-shadow: none;
+        }
+
+            .timeline .panel-outline .panel-body {
+                padding: 10px 0px;
+            }
+
+            .timeline .panel-outline .panel-heading:not(.icon),
+            .timeline .panel-outline .panel-footer {
+                display: none;
+            }
+
+    .img-rounded {
+        float: left;
+    }
+
+        .img-rounded img {
+            width: 150px;
+            height: 200px;
+        }
+
+    .material-switch > input[type="radio"] {
+        display: none;
+    }
+
+    .material-switch > label {
+        cursor: pointer;
+        height: 0px;
+        position: relative;
+        width: 40px;
+    }
+
+        .material-switch > label::before {
+            background: rgb(0, 0, 0);
+            box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            content: '';
+            height: 16px;
+            margin-top: -8px;
+            position: absolute;
+            opacity: 0.3;
+            transition: all 0.4s ease-in-out;
+            width: 40px;
+        }
+
+        .material-switch > label::after {
+            background: rgb(255, 255, 255);
+            border-radius: 16px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+            content: '';
+            height: 24px;
+            left: -4px;
+            margin-top: -8px;
+            position: absolute;
+            top: -4px;
+            transition: all 0.3s ease-in-out;
+            width: 24px;
+        }
+
+    .material-switch > input[type="radio"]:checked + label::before {
+        background: inherit;
+        opacity: 0.5;
+    }
+
+    .material-switch > input[type="radio"]:checked + label::after {
+        background: inherit;
+        left: 20px;
+    }
+
+    .checkbox label:after,
+    .radio label:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+    .checkbox .cr,
+    .radio .cr {
+        position: relative;
+        display: inline-block;
+        border: 1px solid #a9a9a9;
+        border-radius: .25em;
+        width: 1.3em;
+        height: 1.3em;
+        float: left;
+        margin-right: .5em;
+    }
+
+    .radio .cr {
+        border-radius: 50%;
+    }
+
+        .checkbox .cr .cr-icon,
+        .radio .cr .cr-icon {
+            position: absolute;
+            font-size: .8em;
+            line-height: 0;
+            top: 50%;
+            left: 20%;
+        }
+
+        .radio .cr .cr-icon {
+            margin-left: 0.04em;
+        }
+
+    .checkbox label input[type="checkbox"],
+    .radio label input[type="radio"] {
+        display: none;
+    }
+
+        .checkbox label input[type="checkbox"] + .cr > .cr-icon,
+        .radio label input[type="radio"] + .cr > .cr-icon {
+            transform: scale(3) rotateZ(-20deg);
+            opacity: 0;
+            transition: all .3s ease-in;
+        }
+
+        .checkbox label input[type="checkbox"]:checked + .cr > .cr-icon,
+        .radio label input[type="radio"]:checked + .cr > .cr-icon {
+            transform: scale(1) rotateZ(0deg);
+            opacity: 1;
+        }
+
+        .checkbox label input[type="checkbox"]:disabled + .cr,
+        .radio label input[type="radio"]:disabled + .cr {
+            opacity: .5;
+        }
+</style>
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}@Html.Raw(TempData["Success_Mess"])

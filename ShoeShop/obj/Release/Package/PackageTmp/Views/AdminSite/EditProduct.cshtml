@@ -1,0 +1,377 @@
+﻿@model ShoeShop.Models.SanPham
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+ 
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.SanPhamID)
+
+        <div class="container">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.SanPhamID)
+            <div class="page-header">
+                <h2>Thêm sản phẩm mới</h2>
+            </div>
+
+            <div class="timeline">
+
+                <div class="line text-muted"></div>
+
+
+
+                <article class="panel panel-primary">
+
+
+                    <div class="panel-heading icon">
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </div>
+
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Mô tả</h2>
+                    </div>
+
+                    <div class="panel-body">
+                        @Html.TextAreaFor(model => model.Mota, rows: 4, columns: 50, htmlAttributes: new { @class = "form-control" })
+                    </div>
+
+                    <div class="panel-footer">
+                        <small></small>
+                    </div>
+
+
+                </article>
+
+                <article class="panel panel-success">
+
+
+                    <div class="panel-heading icon">
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </div>
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Thông tin chi tiết sản phẩm</h2>
+                    </div>
+                    <div class="form-group col-md-6 input-group" style="margin:auto;margin-top:10px">
+                        @Html.LabelFor(model => model.TenSanPham, "Tên Sản Phẩm", htmlAttributes: new { @class = "input-group-addon" })
+                        @Html.EditorFor(model => model.TenSanPham, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    <div class=" form-group col-md-6 input-group" style="margin:auto;margin-top:10px;margin-bottom:10px;">
+                        @Html.LabelFor(model => model.MaSanPham, "Mã Sản Phẩm", htmlAttributes: new { @class = "input-group-addon" })
+                        @Html.EditorFor(model => model.MaSanPham, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="form-group col-md-6 input-group" style="margin:auto;margin-top:10px">
+                                @Html.LabelFor(model => model.GiaBan, "Giá Bán", htmlAttributes: new { @class = "input-group-addon" })
+                                @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="form-group col-md-6 input-group" style="margin:auto;margin-top:10px">
+                                @Html.LabelFor(model => model.NhaSanXuat, "Nhà Sản Xuất", htmlAttributes: new { @class = "input-group-addon" })
+                                @Html.EditorFor(model => model.NhaSanXuat, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="form-group col-md-6 input-group" style="margin:auto;margin-top:10px">
+                                @Html.LabelFor(model => model.TrangThai, "Trạng thái sản phẩm", htmlAttributes: new { @class = "input-group-addon" })
+                                @Html.DropDownList("TrangThai", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.TrangThai, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-6 input-group" style="margin:auto;margin-top:10px">
+                                @Html.LabelFor(model => model.LoaiID, "Loại Sản Phẩm", htmlAttributes: new { @class = "input-group-addon" })
+                                @Html.DropDownList("LoaiID", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.LoaiID, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-6 input-group" style="margin:auto;margin-top:10px">
+                                @Html.LabelFor(model => model.LoaiID, "Loại Khuyển Mãi", htmlAttributes: new { @class = "input-group-addon" })
+                                @Html.DropDownList("KhuyenMaiID", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.KhuyenMaiID, "", new { @class = "text-danger" })
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            Size giày:
+                            @foreach (var item in ViewBag.Sizes as List<ShoeShop.Models.Size>)
+                            {
+                                string idE = "Size" + item.SizeID;
+                                bool chon = false;
+                                int[] sizesChon = ViewBag.SizesChon as int[];
+                                if (sizesChon != null && sizesChon.Count(p => p == item.SizeID) > 0)
+                                {
+                                    chon = true;
+                                }
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="@item.SizeID" name="SizeIDs" ide="@idE" checked="@chon">
+                                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                                        @Html.Label(idE, item.TenSize)
+                                    </label>
+                                </div>
+
+                             }
+                        </li>
+
+                        <li class="list-group-item">
+
+                            Trạng thái Sản Phẩm:
+                            @Html.LabelFor(model => model.Deleted)
+                            @Html.CheckBoxFor(model => model.Deleted)
+                        </li>
+                    </ul>
+
+                </article>
+
+                <article class="panel panel-info panel-outline">
+
+                    <div class="panel-heading icon">
+                        <i class="glyphicon glyphicon-info-sign"></i>
+                    </div>
+
+                    <div class="panel-body">
+                        <input type="submit" class="btn btn-danger btn-block btn-mini" style="margin-top:10px" value="Thêm">
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+}
+<style type="text/css">
+    .timeline {
+        position: relative;
+        padding: 21px 0px 10px;
+        margin-top: 4px;
+        margin-bottom: 30px;
+    }
+
+        .timeline .line {
+            position: absolute;
+            width: 4px;
+            display: block;
+            background: currentColor;
+            top: 0px;
+            bottom: 0px;
+            margin-left: 30px;
+        }
+
+        .timeline .separator {
+            border-top: 1px solid currentColor;
+            padding: 5px;
+            padding-left: 40px;
+            font-style: italic;
+            font-size: .9em;
+            margin-left: 30px;
+        }
+
+        .timeline .line::before {
+            top: -4px;
+        }
+
+        .timeline .line::after {
+            bottom: -4px;
+        }
+
+        .timeline .line::before,
+        .timeline .line::after {
+            content: '';
+            position: absolute;
+            left: -4px;
+            width: 12px;
+            height: 12px;
+            display: block;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .timeline .panel {
+            position: relative;
+            margin: 10px 0px 21px 70px;
+            clear: both;
+        }
+
+            .timeline .panel::before {
+                position: absolute;
+                display: block;
+                top: 8px;
+                left: -24px;
+                content: '';
+                width: 0px;
+                height: 0px;
+                border: inherit;
+                border-width: 12px;
+                border-top-color: transparent;
+                border-bottom-color: transparent;
+                border-left-color: transparent;
+            }
+
+            .timeline .panel .panel-heading.icon * {
+                font-size: 20px;
+                vertical-align: middle;
+                line-height: 40px;
+            }
+
+            .timeline .panel .panel-heading.icon {
+                position: absolute;
+                left: -59px;
+                display: block;
+                width: 40px;
+                height: 40px;
+                padding: 0px;
+                border-radius: 50%;
+                text-align: center;
+                float: left;
+            }
+
+        .timeline .panel-outline {
+            border-color: transparent;
+            background: transparent;
+            box-shadow: none;
+        }
+
+            .timeline .panel-outline .panel-body {
+                padding: 10px 0px;
+            }
+
+            .timeline .panel-outline .panel-heading:not(.icon),
+            .timeline .panel-outline .panel-footer {
+                display: none;
+            }
+
+    .img-rounded {
+        float: left;
+    }
+
+        .img-rounded img {
+            width: 150px;
+            height: 200px;
+        }
+
+    .material-switch > input[type="radio"] {
+        display: none;
+    }
+
+    .material-switch > label {
+        cursor: pointer;
+        height: 0px;
+        position: relative;
+        width: 40px;
+    }
+
+        .material-switch > label::before {
+            background: rgb(0, 0, 0);
+            box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            content: '';
+            height: 16px;
+            margin-top: -8px;
+            position: absolute;
+            opacity: 0.3;
+            transition: all 0.4s ease-in-out;
+            width: 40px;
+        }
+
+        .material-switch > label::after {
+            background: rgb(255, 255, 255);
+            border-radius: 16px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+            content: '';
+            height: 24px;
+            left: -4px;
+            margin-top: -8px;
+            position: absolute;
+            top: -4px;
+            transition: all 0.3s ease-in-out;
+            width: 24px;
+        }
+
+    .material-switch > input[type="radio"]:checked + label::before {
+        background: inherit;
+        opacity: 0.5;
+    }
+
+    .material-switch > input[type="radio"]:checked + label::after {
+        background: inherit;
+        left: 20px;
+    }
+
+    .checkbox label:after,
+    .radio label:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+    .checkbox .cr,
+    .radio .cr {
+        position: relative;
+        display: inline-block;
+        border: 1px solid #a9a9a9;
+        border-radius: .25em;
+        width: 1.3em;
+        height: 1.3em;
+        float: left;
+        margin-right: .5em;
+    }
+
+    .radio .cr {
+        border-radius: 50%;
+    }
+
+        .checkbox .cr .cr-icon,
+        .radio .cr .cr-icon {
+            position: absolute;
+            font-size: .8em;
+            line-height: 0;
+            top: 50%;
+            left: 20%;
+        }
+
+        .radio .cr .cr-icon {
+            margin-left: 0.04em;
+        }
+
+    .checkbox label input[type="checkbox"],
+    .radio label input[type="radio"] {
+        display: none;
+    }
+
+        .checkbox label input[type="checkbox"] + .cr > .cr-icon,
+        .radio label input[type="radio"] + .cr > .cr-icon {
+            transform: scale(3) rotateZ(-20deg);
+            opacity: 0;
+            transition: all .3s ease-in;
+        }
+
+        .checkbox label input[type="checkbox"]:checked + .cr > .cr-icon,
+        .radio label input[type="radio"]:checked + .cr > .cr-icon {
+            transform: scale(1) rotateZ(0deg);
+            opacity: 1;
+        }
+
+        .checkbox label input[type="checkbox"]:disabled + .cr,
+        .radio label input[type="radio"]:disabled + .cr {
+            opacity: .5;
+        }
+</style>
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+@Html.Raw(TempData["Success_Mess"])
+
+

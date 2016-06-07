@@ -1,0 +1,189 @@
+﻿@model ShoeShop.ViewModel.TableViewModel
+@{
+    var listProduct = ViewBag.Menu as List<ShoeShop.Models.Loai>;
+    var cart = ViewBag.Cart as ShoeShop.ViewModel.CartModel;
+    var img = ViewBag.Img as ShoeShop.Models.SanPhamHinh;
+}
+<div class="navbar-inner">
+    <div class="container">
+        <div class="row">
+            <div class="span9">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="nav-collapse collapse">
+                    <ul class="nav" id="mainNavigation">
+                        <li class="dropdown active">
+                            @Html.ActionLink("Trang Chủ", "Index", "Home")
+                        </li>
+                        @*<li class="dropdown dropdown-supermenu">
+                                <a href="shop.html" class="dropdown-toggle"> Shop <b class="caret"></b> </a>
+                                <ul class="dropdown-menu supermenu accepts-5">
+                                    <li class="row">
+                                        <div class="span2">
+                                            <ul class="nav nav-pills nav-stacked">
+                                                <li><a href="shop.html">Grid View</a></li>
+                                                <li><a href="shop-list-view.html">List View</a></li>
+                                                <li><a href="shop-no-sidebar.html">Full Width</a></li>
+                                                <li><a href="product.html">Single Product</a></li>
+                                                <li><a href="shop-search.html">Search Results</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="span3">
+                                            <div class="embed-container"><iframe src="http://player.vimeo.com/video/5606758" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
+                                            <h5><span class="light">Awesome</span> Video</h5>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, maiores.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>*@
+                        <li class="dropdown dropdown-megamenu">
+                            <a href="#" class="dropdown-toggle"> Sản Phẩm <b class="caret"></b> </a>
+                            <ul class="dropdown-menu megamenu container">
+                                <li class="row">
+                                    <div class="span3">
+                                        <ul class="nav nav-pills nav-stacked">
+                                            @foreach (var product in listProduct)
+                                            {
+                                                <li><a href="">@product.Ten</a></li>
+                                            }
+
+
+                                        </ul>
+                                    </div>
+
+                                    @foreach (var product in listProduct)
+                                    {
+                                        <div class="span2">
+                                            <ul class="nav nav-pills nav-stacked">
+                                                <li>
+                                                    <a href='@Html.Raw(Url.Action("F_Category","Home",new { name = product.BiDanh, id = product.ID }))'>@product.Ten</a>
+                                                    @*@Html.ActionLink(@product.Ten, "F_Category", "Home", new { name = product.BiDanh, id = product.ChungLoaiID }, null)*@
+                                                </li>
+                                            </ul>
+                                            @foreach (var subproduct in product.Loai1)
+                                            {
+                                                <ul class="nav unstyled" style="text-decoration:none">
+                                                    <li>
+                                                        @Html.ActionLink(@subproduct.Ten, "Category", "Home", new { name = subproduct.BiDanh, id = subproduct.ID }, null)
+                                                    </li>
+                                                </ul>
+                                            }
+                                        </div>
+                                    }
+                                    <div class="span3">
+                                        <a href="shop.html"><img src="~/Content/images/dummy/menu/woman.jpg" alt="woman in red" width="540" height="270"></a>
+                                        <h5><span class="light">Featured</span> Category</h5>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, quas illo sapiente ratione nihil ut.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="row visible-desktop">
+                                    <div class="span12">
+                                        <hr>
+                                    </div>
+                                </li>
+                                <li class="row visible-desktop">
+                                    <div class="span6">
+                                        New arrivals in: &nbsp;
+                                        <a href="#" class="btn btn-mini">Clothing</a>
+                                        <a href="#" class="btn btn-mini">Shoes</a>
+                                        <a href="#" class="btn btn-mini">Accessories</a>
+                                        <a href="#" class="btn btn-mini btn-warning">Back in stock</a>
+                                    </div>
+                                    <div class="span6">
+                                        <div class="pull-right sm-no-pull">
+                                            Outlet / Sale: &nbsp;
+                                            <a href="#" class="btn btn-mini btn-success">UP TO -70%</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>@Html.ActionLink("Quy Định Chung", "About", "Home")</li>
+                        <li>@Html.ActionLink("Liên Hệ", "Contact", "Home")</li>
+                    </ul>
+
+                    <form class="navbar-form pull-right" action="~/tim-kiem/ketqua" method="post">
+                        <input type="text" class="span1" name="ketqua" id="navSearchInput">
+                        <button type="submit" id="searchBtn"><span class="icon-search"></span></button>
+                    </form>
+                    @*<form class="navbar-form pull-right" action="#" method="post">
+                            <button type="button" id="searchBtn"><span class="icon-search"></span></button>
+                            <input type="text" class="span1" name="search" id="navSearchInput" >
+                        </form>*@
+
+                </div>
+            </div>
+
+
+
+            <div class="span3" id="menu_load">
+                <div class="cart-container" id="cartContainer">
+                    <div class="cart">
+                        @if (cart == null || cart.Items.Count() == 0)
+                        {
+                            <p class="items">CART <span class="dark-clr">(0)</span></p>
+                            <p class="dark-clr hidden-tablet">0.00 VND</p>
+                        }
+                        else
+                        {
+                            <p class="items">CART <span class="dark-clr">(@cart.Items.Sum(p => p.SoLuong))</span></p>
+                            <p class="dark-clr hidden-tablet">@cart.Total().ToString("#,##0VND")</p>
+                        }
+
+                        <a href="" class="btn btn-danger">
+
+                            <i class="icon-shopping-cart"></i>
+                        </a>
+                    </div>
+                    <div class="open-panel">
+                        @foreach (var item in cart.Items)
+                        {
+
+                            decimal total = item.SoLuong * item.SanPham.GiaBan;
+                            <input type="hidden" value="@item.SanPhamSizeID" id="productSizeId" />
+                            <div class="item-in-cart clearfix">
+                                <div class="desc">
+                                    @*<img src="@img.TenHinh" alt="" width="124" height="124" />*@
+                                    <strong><a href="">@item.SanPham.TenSanPham</a></strong>
+                                    <span class="light-clr qty">
+                                        Số Lượng: @item.SoLuong
+                                        &nbsp;
+                                        <a href="" class="icon-remove-sign removeItemMenu" title="Remove Item" data-id="@item.SanPhamSizeID"></a>
+                                    </span>
+                                </div>
+                                <div class="price">
+                                    <strong>@string.Format("{0:#,##0 VND}", @item.SanPham.GiaBan)</strong>
+                                </div>
+                            </div>
+
+                        }
+                        <div class="summary">
+                            <div class="line">
+                                <div class="row-fluid">
+                                    <div class="span6">Shipping:</div>
+                                    <div class="span6 align-right">Free</div>
+                                </div>
+                            </div>
+                            <div class="line">
+                                <div class="row-fluid">
+                                    <div class="span6">Tổng tiền:</div>
+                                    <div class="span6 align-right size-16"> @cart.Total().ToString("#,##0VND")</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="proceed">
+                            <a href="@Url.Action("CheckOutStepOne","Cart")" class="btn btn-danger pull-right bold higher">Tiến hành thanh toán <i class="icon-shopping-cart"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

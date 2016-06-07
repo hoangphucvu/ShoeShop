@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ShoeShop.Models.SanPham>
+
+<div class="boxed-area blocks-spacer">
+    <div class="container">
+
+
+
+        <div class="row">
+            <div class="span12">
+                <div class="main-titles lined">
+                    <h2 class="title"><span class="light"></span>Sản Phẩm Mới</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row popup-products blocks-spacer">
+
+
+            @foreach (var item in Model)
+            {
+                <div class="span3">
+                    <div class="product">
+                        <div class="product-inner">
+                            <div class="product-img">
+                                <div class="picture">
+                                    <a href=""><img src="~/Photos/@item.SanPhamHinhs.FirstOrDefault().TenHinh" alt="@item.TenSanPham" title="@item.TenSanPham" style="width: 300px; height: 250px" /></a>
+                                    <div class="img-overlay">
+                                        @Html.ActionLink("Chi tiết", "Details", "Home", new { name = item.BiDanh, id = item.SanPhamID }, new { @class = "btn more btn-primary" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main-titles no-margin" style="text-align:center">
+                                <h4 class="title">@item.TenSanPham</h4>
+                                <h5 class="no-margin">@string.Format("{0:#,##0 VND}", item.GiaBan) </h5>
+                            </div>
+                            <p class="desc">@*59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila*@</p>
+                            <div class="row-fluid hidden-line">
+                                <div class="span6">
+                                    <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
+                                    <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
+                                </div>
+                                <div class="span6 align-right">
+                                    <span class="icon-star stars-clr"></span>
+                                    <span class="icon-star stars-clr"></span>
+                                    <span class="icon-star stars-clr"></span>
+                                    <span class="icon-star stars-clr"></span>
+                                    <span class="icon-star stars-clr"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="clearfix"></div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@model ShoeShop.Models.Size
+@{
+    ViewBag.Title = "EditSize";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@Html.ActionLink("Trở về trang trước", "SizeManage", null, new { @class = "btn btn-primary" })
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-horizontal row" style="margin:auto">
+        <input type="hidden" value="@Model.SizeID" />
+        <div class="col-md-12 well " style="margin-top:5%">
+            <h3><span class="label label-primary" style="margin-left: 40%;">Thông Tin Size</span></h3>
+
+            <div class="form-group col-md-6 input-group" style="margin:auto;margin-top:10px">
+
+                @Html.LabelFor(model => model.MaSize, htmlAttributes: new { @class = "input-group-addon" })
+                @Html.EditorFor(model => model.MaSize, new { htmlAttributes = new { @class = "form-control" } })
+
+            </div>
+            @Html.ValidationMessageFor(model => model.MaSize, "", new { @class = "text-danger", style = "margin-left:40%" })
+            <div class="form-group col-md-6 input-group" style="margin:auto;margin-top:10px">
+
+                @Html.LabelFor(model => model.TenSize, htmlAttributes: new { @class = "input-group-addon" })
+                @Html.EditorFor(model => model.TenSize, new { htmlAttributes = new { @class = "form-control" } })
+
+            </div>
+            @Html.ValidationMessageFor(model => model.TenSize, "", new { @class = "text-danger", style = "margin-left:40%" })
+            <div class="form-group col-md-6 input-group" style="margin:auto;margin-top:10px;margin-bottom:10px;">
+
+                @Html.LabelFor(model => model.GhiChu, htmlAttributes: new { @class = "input-group-addon" })
+                @Html.EditorFor(model => model.GhiChu, new { htmlAttributes = new { @class = "form-control" } })
+
+            </div>
+            @Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger", style = "margin-left:40%" })
+        </div>
+        <button type="submit" class="btn btn-danger btn-block btn-mini" style="margin-top:10px">Thêm</button>
+    </div>
+}
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+@Html.Raw(TempData["Success_Mess"])

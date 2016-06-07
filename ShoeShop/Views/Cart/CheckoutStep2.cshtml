@@ -1,0 +1,47 @@
+﻿@model ShoeShop.Models.DonHang
+@{
+    ViewBag.Title = "Thanh toán bước 2";
+    Layout = "~/Views/Shared/_ShoeLayout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Nhập thông tin - Đặt hàng</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="control-group">
+            <label class="control-label" for="name">Tên người nhận<span class="red-clr bold">*</span></label>
+            <div class="controls">
+                @Html.EditorFor(model => model.TenKhachHang, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.ValidationMessageFor(model => model.TenKhachHang, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="address">Địa Chỉ<span class="red-clr bold">*</span></label>
+            <div class="controls">
+                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="phone">Số điện thoại<span class="red-clr bold">*</span></label>
+            <div class="controls">
+                @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="note">Ghi Chú<span class="red-clr bold">*</span></label>
+            <div class="controls">
+                @Html.TextAreaFor(model => model.GhiChu, rows: 3, columns: 100, htmlAttributes: new { @class = "form-control" })
+                @*@Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+        <div class="control-group">
+            <input type="submit" value="Ghi thông tin" class="btn btn-primary" />
+        </div>
+    </div>
+}

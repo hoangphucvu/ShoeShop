@@ -1,0 +1,54 @@
+﻿@model ShoeShop.ViewModel.CartModel
+@{
+    ViewBag.Title = "Cart-Index";
+    Layout = "~/Views/Shared/_ShoeLayout.cshtml";
+}
+
+<h2>Giỏ hàng của bạn</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tên sản phẩm</th>
+            <th>Tên size</th>
+            <th>Giá bán</th>
+            <th>Khuyến mãi</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+            <th>Xóa</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Items)
+        {
+            decimal thanhTien = item.SoLuong * item.SanPham.GiaBan;
+            <tr class="success">
+                <td>@item.SanPham.SanPhamID</td>
+                <td>@item.SanPham.TenSanPham</td>
+                <td>@item.Size.TenSize</td>
+                <td>@item.SanPham.GiaBan</td>
+                <td>@item.SanPham.KhuyenMai.Ten</td>
+                <td>
+                    <form id="frmXLUpdate" action="@Url.Action("UpdateToCart","Cart")" method="post">
+                        <input type="hidden" name="sanPhamSizeID" value="@item.SanPhamSizeID" />
+                        <input type="number" name="soLuong" value="@item.SoLuong" style="width:50px" />
+                        <input type="image" src="~/Images/updateIcon.png" id="btnCapNhat" style="height:24px;position:absolute" />
+                    </form>
+                </td>
+                <td>@thanhTien.ToString("#,##0VND")</td>
+                <td>
+                    <form id="frmXLDelete" action="@Url.Action("RemoveFromCart","Cart")" method="post">
+                        <input type="hidden" name="sanPhamSizeID" value="@item.SanPhamSizeID" />
+                        <input type="image" src="~/Images/deleteIcon.png" id="btnXoa" style="height:24px;" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <b>Tổng trị giá: @Model.Total().ToString("#,##0VND")</b>
+    @Html.ActionLink("Đặt mua","Checkout","Cart")
+</div>
+

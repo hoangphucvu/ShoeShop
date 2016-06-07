@@ -1,0 +1,41 @@
+﻿@model List<ShoeShop.Models.Size>
+@{
+    ViewBag.Title = "SizeManage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@Html.ActionLink("Thêm size mới", "NewSize", null, new { @class = "btn btn-danger" })
+<div class="row well" style="margin:5%">
+    <div class="col-md-12">
+        <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Mã Size</th>
+            <th>Tên Size</th>
+            <th>Ghi Chú</th>
+            <th>Cập nhật/
+            Xóa</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sizeItem in Model)
+        {
+            <tr>
+                <th scope="row">@sizeItem.SizeID</th>
+                <td>@sizeItem.MaSize</td>
+                <td>@sizeItem.TenSize</td>
+                <td>@sizeItem.GhiChu</td>
+                <td>
+                    @Html.ActionLink("Cập nhật", "EditSize", new { id = sizeItem.SizeID }, new { @class = "btn btn-facebook" })
+                    @Html.ActionLink("Xóa", "DeleteSize", new { id = sizeItem.SizeID }, htmlAttributes: new { onclick = "return confirm('Bạn có chắc chắn không ?');", @class = "btn btn-danger" })
+                 </td>
+            </tr>
+        }
+
+       
+    </tbody>
+</table>
+    </div>
+</div>
+
+

@@ -1,0 +1,106 @@
+﻿@model ShoeShop.ViewModel.TableViewModel
+@{
+    ViewBag.Title = "Thanh Toán Bước 1";
+    Layout = "~/Views/Shared/_ShoeLayout.cshtml";
+    var cart = ViewBag.Cart as ShoeShop.ViewModel.CartModel;
+}
+
+
+<div class="master-wrapper">
+    <div class="container">
+        <div class="row">
+
+
+
+            <section class="span12">
+                <div class="checkout-container">
+                    <div class="row">
+                        <div class="span10 offset1">
+
+
+
+
+                            <div class="checkout-steps">
+                                <div class="clearfix">
+                                    <div class="step active">
+                                        <div class="step-badge">1</div>
+                                        Thông tin giỏ hàng
+                                    </div>
+                                    <div class="step">
+                                        <div class="step-badge">2</div>
+                                        Thông tin người nhận
+                                    </div>
+                                    <div class="step">
+                                        <div class="step-badge">3</div>
+                                        Hoàn thành
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            @if (cart == null || cart.Items.Count() == 0)
+                            {
+                                <div class="alert alert-warning" role="alert">
+                                    <img src="~/Content/img/i_msg-note.png" />Chưa có sản phẩm trong giỏ hàng
+                                </div>
+                            }
+                            else
+                            {
+                                <table class="table table-items">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2">Sản phẩm</th>
+                                            <th><div class="align-center">Số lượng</div></th>
+                                            <th><div class="align-right">Giá Tiền</div></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in cart.Items)
+                                        {
+                                            decimal total = item.SoLuong * item.SanPham.GiaBan;
+
+                                            <tr class="checkOut_contain">
+                                                <td><input type="hidden" value="@item.SanPhamSizeID" id="productSizeIdCheckOut" /></td>
+                                                @*<td class="image"><img src="@item.SanPhamHinh.TenHinh" alt="" width="124" height="124" /></td>*@
+                                                <td class="desc">@item.SanPham.TenSanPham &nbsp; <a title="Remove Item" class="icon-remove-sign" href="#" id="removeItemCheckOut" data-id="@item.SanPhamSizeID"></a></td>
+                                                <td>Size :@item.Size.TenSize</td>
+                                                <td class="qty">
+                                                    <input type="text" class="tiny-size" id="checkoutQuantity_@item.SanPhamSizeID" value="@item.SoLuong" />
+                                                    <a href="" class="btn btn-primary higher bold upQuantity" data-item_id="@item.SanPhamSizeID">Cập nhật</a>
+                                                </td>
+                                                <td class="price">
+                                                    <strong>@string.Format("{0:#,##0 VND}", @item.SanPham.GiaBan)</strong>
+                                                </td>
+
+                                            </tr>
+                                        }
+                                        <tr>
+                                            <td colspan="2" rowspan="2">
+                                                <div class="alert alert-info">
+                                                    <button data-dismiss="alert" class="close" type="button">×</button>
+                                                    @Html.ActionLink("Thông tin và phí vận chuyện", "About", "Home")
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="stronger">Tổng tiền:</td>
+                                            <td class="stronger"><div class="size-16 align-right">@cart.Total().ToString("#,##0VND")</div></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p class="right-align">
+                                    <a href="@Url.Action("CheckoutStep2","Cart")" class="btn btn-primary higher bold">Xác nhận</a>
+                                </p>
+                                <hr />
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+

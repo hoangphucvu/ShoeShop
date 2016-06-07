@@ -1,0 +1,117 @@
+﻿@model IEnumerable<ShoeShop.Models.SanPham>
+@{
+    Layout = "~/Views/Shared/_ShoeLayout.cshtml";
+}
+
+<div class="darker-stripe">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <ul class="breadcrumb">
+                    <li style="color:white">
+                        Danh mục
+                    </li>
+                    <li><span class="icon-chevron-right"></span></li>
+                    <li>
+                        <a href="@Request.Url.AbsoluteUri">@ViewBag.Title </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="push-up blocks-spacer">
+        <div class="row">
+            <section class="span12">
+
+
+
+                <div class="underlined push-down-20">
+                    <div class="row">
+                        <div class="span6">
+                            <h3><span class="light"></span> @ViewBag.Count</h3>
+                        </div>
+                        <div class="span6">
+                            <div class="form-inline sorting-by" style="float:right">
+                                <label for="isotopeSorting" class="black-clr">Sort:</label>
+                                <select id="isotopeSorting" class="span3">
+                                    <option value='{"sortBy":"price", "sortAscending":"true"}'>By Price (Low to High) &uarr;</option>
+                                    <option value='{"sortBy":"price", "sortAscending":"false"}'>By Price (High to Low) &darr;</option>
+                                    @*<option value='{"sortBy":"name", "sortAscending":"true"}'>By Name (Low to High) &uarr;</option>
+                                        <option value='{"sortBy":"name", "sortAscending":"false"}'>By Name (High to Low) &darr;</option>
+                                        <option value='{"sortBy":"popularity", "sortAscending":"true"}'>By Popularity (Low to High) &uarr;</option>
+                                        <option value='{"sortBy":"popularity", "sortAscending":"false"}'>By Popularity (High to Low) &darr;</option>*@
+                                </select>
+                                @*<label for="numberShown" class="black-clr">Show:</label>
+                                    <select id="numberShown" class="span1">
+                                        <option value="9">9</option>
+                                        <option value="15">15</option>
+                                        <option value="30">30</option>
+                                    </select>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row popup-products">
+                    <div id="isotopeContainer" class="isotope-container">
+
+
+                        @foreach (var item in Model)
+                        {
+                            <div class="span3 isotope--target filter--accessories" data-price="@item.GiaBan">
+                                <div class="product">
+                                    <div class="product-inner">
+                                        <div class="product-img">
+                                            <div class="picture">
+                                                <a href=""><img src="~/Photos/@item.SanPhamHinhs.First().TenHinh" alt="@item.TenSanPham" title="@item.TenSanPham" style="width:100%;height:300px" /></a>
+                                                <div class="img-overlay">
+                                                    @Html.ActionLink("Chi tiết", "Details", "Home", new { name = item.BiDanh, id = item.SanPhamID }, new { @class = "btn more btn-primary" })
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="main-titles no-margin" style="text-align:center">
+                                            <h4 class="title">@item.TenSanPham</h4>
+                                            <h5 class="no-margin">@string.Format("{0:#,##0 VND}", item.GiaBan) </h5>
+                                        </div>
+                                        <div class="row-fluid hidden-line">
+                                            <div class="span6">
+                                                <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
+                                                <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
+                                            </div>
+                                            <div class="span6 align-right">
+                                                <span class="icon-star stars-clr"></span>
+                                                <span class="icon-star stars-clr"></span>
+                                                <span class="icon-star stars-clr"></span>
+                                                <span class="icon-star stars-clr"></span>
+                                                <span class="icon-star"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+
+
+
+
+                    </div>
+                </div>
+                <hr />
+                
+
+            </section>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

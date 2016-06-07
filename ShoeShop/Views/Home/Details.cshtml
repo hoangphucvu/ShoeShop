@@ -1,0 +1,217 @@
+﻿@model ShoeShop.Models.SanPham
+@{
+    ViewBag.Title = Model.TenSanPham;
+    Layout = "~/Views/Shared/_ShoeLayout.cshtml";
+}
+
+<div class="darker-stripe">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="index-2.html">Sản Phẩm</a>
+                    </li>
+                    <li><span class="icon-chevron-right"></span></li>
+                    <li>
+                        <a href="shop.html">@Model.Loai.Ten</a>
+                    </li>
+                    <li><span class="icon-chevron-right"></span></li>
+                    <li>
+                        <a href="#">@Model.TenSanPham</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="push-up top-equal blocks-spacer">
+
+
+
+        <div class="row blocks-spacer">
+
+
+
+            <div class="span5">
+                <div class="product-preview">
+                    <div class="picture">
+                        <img src="~/Photos/@Model.SanPhamHinhs.First().TenHinh" alt="@Model.TenSanPham" title="@Model.TenSanPham" style="width:100%;height:300px" id="mainPreviewImg" />
+                    </div>
+                    <div class="thumbs clearfix">
+                        @foreach (var img in Model.SanPhamHinhs)
+                        {
+                            <div class="thumb active">
+                                <a href="#mainPreviewImg"><img src="~/Photos/@img.TenHinh" alt="@img.SanPham.TenSanPham" title="@img.SanPham.TenSanPham" id="mainPreviewImg" /></a>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="span7">
+                <div class="product-title">
+                    <h1 class="name"><span class="light"></span> @Model.TenSanPham</h1>
+                    <div class="meta">
+                        <span class="tag"> @string.Format("{0:#,##0 VND}", @Model.GiaBan)</span>
+                        <span class="stock">
+                            <span class="btn btn-success">@Model.NhaSanXuat</span>
+                            <span class="btn btn-danger">Số Lần Xem: @Model.SoLanXem </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="product-description">
+                    <p>@Model.Mota</p>
+                    <hr />
+
+
+
+                    <div class="form form-inline clearfix">
+                        <div class="numbered">
+                            <input type="text" name="num" value="1" class="tiny-size" id="quantity" />
+                            <span class="clickable add-one icon-plus-sign-alt"></span>
+                            <span class="clickable remove-one icon-minus-sign-alt"></span>
+                        </div>
+                        &nbsp;
+                        <select name="productSize" class="span2" id="productSize">
+                            <option value="-1"> Size Hiện Có</option>
+                            @foreach (var size in Model.SanPhamSizes)
+                            {
+                                <option value="@size.SanPhamSizeID">@size.Size.TenSize</option>
+                            }
+                        </select>
+                        &nbsp;
+                        <button class="btn btn-danger buyProduct"><i class="icon-shopping-cart"></i> &nbsp; Add To Cart</button>
+                       
+                    </div>
+                    <div id="show_message" style="display:none" class="col-md-3">
+                        <div class="alert alert-warning" role="alert">
+                            <img src="~/Content/img/i_msg-note.png" />Đã thêm sản phẩm vào giỏ hàng
+                        </div>
+                    </div>
+                    <hr />
+
+
+
+                    <div class="share-item push-down-20">
+                        <div class="row-fluid">
+                            <div style="margin-top:10px;margin-bottom:10px"
+                                 class="fb-like visible-md visible-lg"
+                                 data-share="true"
+                                 data-width="450"
+                                 data-show-faces="true">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="span12">
+                <ul id="myTab" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#tab-1" data-toggle="tab">Chi Tiết</a>
+                    </li>
+                    <li>
+                        <a href="#tab-2" data-toggle="tab">Bình Luận</a>
+                    </li>
+                    <li>
+                        <a href="#tab-3" data-toggle="tab">Thông Tin Vận Chuyển</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="fade in tab-pane active" id="tab-1">
+                        <h3>Chi tiết sản phẩm</h3>
+                        <p>Tên Sản Phẩm: @Model.TenSanPham</p>
+                        <p>Giá Bán: @string.Format("{0:#,##0 VND}", @Model.GiaBan)</p>
+                        <p>Nhà Sản Xuất: @Model.NhaSanXuat</p>
+                        <p>Mô tả: @Model.Mota</p>
+                    </div>
+                    <div class="fade tab-pane" id="tab-2">
+                        <p>
+                            <div class="fb-comments  visible-md visible-lg" data-href="@Request.Url.AbsoluteUri" data-width="1000" data-colorscheme="light" style="margin-top:20px;margin-bottom:20px"></div>
+                        </p>
+                    </div>
+                    <div class="fade tab-pane" id="tab-3">
+                        <p>
+                            Quý khách nên đặt mua sản phẩm trước 4 giờ qua điện thoại hoặc fax và qua website hoặc email, chúng tôi đảm bảo sẽ vận chuyển sản phẩm đến tận nơi theo yêu cầu của Quý khách hàng . Nếu có trường hợp khẩn cấp, xin vui lòng liên lạc qua điện thoại, chúng tôi sẵn sàng thực hiện đơn hàng một cách nhanh chóng và kịp thời theo yêu cầu. Những đơn hàng tại nội thành phố, thị xã tất cả các tỉnh và thành phố trên lãnh thổ Việt Nam, sau khi khách hàng đã hoàn tất các thủ tục thanh toán, chúng tôi thực hiện đơn hàng và giao đến người nhận trong vòng 24 đến 48 giờ đồng. Đối với những đơn hàng nằm ngoài nội thành TP.HCM, Hà Nội, các tỉnh, thành phố khác, quý Khách nên thực hiện đơn đặt hàng trước 24 giờ để đơn hàng đảm bảo được giao đúng theo yêu cầu. Chúng tôi sẽ bằng mọi khả năng có thể để giao hàng đúng thời gian quý khách yêu cầu sau khi nhận được đơn đặt hàng. Trừ những lý do khách quan xảy ra ngoài ý muốn của cả 2 bên như quý khách cung cấp sai địa chỉ giao hàng, người nhận chuyển chỗ ở, thiên tai…
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="boxed-area no-bottom" style="margin-bottom:-50px">
+    <div class="container">
+
+
+
+        <div class="row">
+            <div class="span12">
+                <div class="main-titles lined">
+                    <h2 class="title"><span class="light"></span>Sản Phẩm Cùng Loại</h2>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row popup-products">
+
+
+            @foreach (var related in ViewBag.RelatedProduct as List<ShoeShop.Models.SanPham>)
+            {
+                <div class="span3">
+                    <div class="product">
+                        <div class="product-inner">
+                            <div class="product-img">
+                                <div class="picture">
+                                    <a href=""><img src="~/Photos/@related.SanPhamHinhs.First().TenHinh" alt="@related.TenSanPham" title="@related.TenSanPham" style="width:100%;height:300px" /></a>
+                                    <div class="img-overlay">
+                                        @Html.ActionLink("Chi tiết", "Details", "Home", new { name = related.BiDanh, id = related.SanPhamID }, new { @class = "btn more btn-primary" })
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main-titles no-margin" style="text-align:center">
+                                <h4 class="title">@related.TenSanPham</h4>
+                                <h5 class="no-margin">@string.Format("{0:#,##0 VND}", related.GiaBan) </h5>
+                            </div>
+                            <p class="desc">59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila</p>
+                            <p class="center-align stars">
+                                <span class="icon-star stars-clr"></span>
+                                <span class="icon-star stars-clr"></span>
+                                <span class="icon-star stars-clr"></span>
+                                <span class="icon-star stars-clr"></span>
+                                <span class="icon-star"></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

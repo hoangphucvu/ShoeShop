@@ -1,0 +1,51 @@
+﻿@model ShoeShop.Models.DonHang
+@{
+    ViewBag.Title = "Thanh toán bước 2";
+    Layout = "~/Views/Shared/_ShoeLayout.cshtml";
+}
+<div class="panel panel-warning align-center" style="text-align:center;margin-top:5%">
+    <div class="panel-heading">
+        <h3 class="panel-title">Thông tin đặt hàng</h3>
+    </div>
+    <div class="panel-body" ng-app="order">
+        <form ng-controller="orderController" name="orderForm" action="~/Cart/CheckoutStepTwo_Post" method="post">
+            <div class="control-group">
+                <label class="control-label" for="name">Tên người nhận<span class="red-clr bold">*</span></label>
+                <div class="controls">
+                    <input type="text" name="TenKhachHang" ng-pattern="/^([a-zA-Z]+)$/" required ng-minlength="3" ng-maxlength="20"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="address">Địa Chỉ<span class="red-clr bold">*</span></label>
+                <div class="controls">
+                    <input type="text" name="DiaChi" ng-pattern="/^([a-zA-Z0-9]+)$/" required ng-minlength="3" ng-maxlength="30" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="phone">Số điện thoại<span class="red-clr bold">*</span></label>
+                <div class="controls">
+                    <input type="text" name="SoDienThoai" ng-pattern="/^(0-9]+)$/" required ng-minlength="5" ng-maxlength="15" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="note">Ghi Chú<span class="red-clr bold">*</span></label>
+                <div class="controls">
+                    <input type="text" name="GhiChu" ng-pattern="/^([a-zA-Z0-9]+)$/" required ng-minlength="3" ng-maxlength="100" />
+                </div>
+            </div>
+            <div class="control-group">
+                <input type="submit" value="Ghi thông tin" class="btn btn-primary" />
+            </div>
+        </form>
+        
+        </div>
+    </div>
+    @section scripts{
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+<script>
+    angular.module('order', []).controller('orderController', ['$scope', function ($scope) {
+
+    }]);
+
+</script>

@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "BrandManage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    WebGrid grid = new WebGrid(Model,canPage: true, rowsPerPage: 5,ajaxUpdateContainerId:"grid");
+    grid.Pager(WebGridPagerModes.All);
+}
+
+@Html.ActionLink("Thêm loại mới", "NewBrand", null, new { @class = "btn btn-danger" })
+<div class="row well" style="margin:5%">
+@grid.GetHtml(tableStyle: "table table-hover ",htmlAttributes: new { id="grid" },
+columns: grid.Columns(
+        grid.Column("ID", header: "ID"),
+        grid.Column("Ten", header: "Tên Loại"),
+        grid.Column("ChungLoai", "Chủng Loại"),
+        grid.Column("BiDanh", header: "URL"),
+        grid.Column(header: "Cập Nhật", format: result => Html.ActionLink("Cập Nhật", "EditBrand", new { id = result.ID }, new { @class = "btn btn-facebook" })),
+        grid.Column(header: "Xóa", format: result => Html.ActionLink("Xóa", "DeleteBrand", new { id = result.ID }, htmlAttributes: new { onclick = "return confirm('Bạn có chắc chắn không ?');", @class = "btn btn-danger" }))
+)
+)
+</div>
+

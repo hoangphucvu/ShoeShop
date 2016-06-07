@@ -1,0 +1,70 @@
+﻿@model ShoeShop.ViewModel.TableViewModel
+@{
+    var cart = ViewBag.Cart as ShoeShop.ViewModel.CartModel;
+    var img = ViewBag.Img as ShoeShop.Models.SanPhamHinh;
+}
+
+
+<div class="cart-container" id="cartContainer">
+    <div class="cart">
+        @if (cart == null || cart.Items.Count() == 0)
+        {
+            <p class="items">CART <span class="dark-clr">(0)</span></p>
+            <p class="dark-clr hidden-tablet">0.00 VND</p>
+        }
+        else
+        {
+            <p class="items">CART <span class="dark-clr">(@cart.Items.Sum(p => p.SoLuong))</span></p>
+            <p class="dark-clr hidden-tablet">@cart.Total().ToString("#,##0VND")</p>
+        }
+
+        <a href="checkout-step-1.html" class="btn btn-danger">
+
+            <i class="icon-shopping-cart"></i>
+        </a>
+    </div>
+    <div class="open-panel">
+        @foreach (var item in cart.Items)
+        {
+            decimal total = item.SoLuong * item.SanPham.GiaBan;
+            <input type="hidden" value="@item.SanPhamSizeID" id="productSizeId" />
+            <div class="item-in-cart clearfix">
+                <div class="desc">
+                    @*<img src="@img.TenHinh" alt="" width="124" height="124" />*@
+                    <strong><a href="">@item.SanPham.TenSanPham</a></strong>
+                    <span class="light-clr qty">
+                        Số Lượng: @item.SoLuong
+                        &nbsp;
+                        <a href="" class="icon-remove-sign removeItemMenu" title="Remove Item" data-id="@item.SanPhamSizeID"></a>
+                    </span>
+                </div>
+                <div class="price">
+                    <strong>@string.Format("{0:#,##0 VND}", @item.SanPham.GiaBan)</strong>
+                </div>
+            </div>
+
+
+
+        }
+        <div class="summary">
+            <div class="line">
+                <div class="row-fluid">
+                    <div class="span6">Shipping:</div>
+                    <div class="span6 align-right">Free</div>
+                </div>
+            </div>
+            <div class="line">
+                <div class="row-fluid">
+                    <div class="span6">Tổng tiền:</div>
+                    <div class="span6 align-right size-16"> @cart.Total().ToString("#,##0VND")</div>
+                </div>
+            </div>
+        </div>
+        <div class="proceed">
+            <a href="@Url.Action("CheckOutStepOne","Cart")" class="btn btn-danger pull-right bold higher">Tiến hành thanh toán <i class="icon-shopping-cart"></i></a>
+        </div>
+    </div>
+</div>
+
+
+

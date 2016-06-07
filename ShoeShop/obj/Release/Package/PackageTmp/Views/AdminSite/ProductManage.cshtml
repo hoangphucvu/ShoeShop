@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "ProductManage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 5);
+    grid.Pager(WebGridPagerModes.All);
+}
+
+@Html.ActionLink("Thêm sản phẩm mới", "NewProduct", null, new { @class = "btn btn-danger" })
+<div class="row well" style="margin:5%">
+    @grid.GetHtml(tableStyle: "table table-hover ", htmlAttributes: new { id = "grid" },
+columns: grid.Columns(
+        grid.Column("SanPhamID", header: "ID"),
+        grid.Column("TenSanPham", header: "Tên Sản Phẩm"),
+        grid.Column("GiaBan", header: "Giá Bán"),
+        grid.Column("Loai.Ten", "Chủng Loại"),
+        grid.Column("BiDanh", header: "URL"),
+                grid.Column(header: "Chi tiết", format: result => Html.ActionLink("Chi tiết", "ProductDetails", new { id = result.SanPhamID }, new { @class = "btn btn-primary" })),
+                grid.Column(header: "Cập Nhật", format: result => Html.ActionLink("Cập Nhật", "EditProduct", new { id = result.SanPhamID }, new { @class = "btn btn-facebook" })),
+                grid.Column(header: "Upload Hình", format: result => Html.ActionLink("Upload Hình", "UploadImg", new { id = result.SanPhamID }, new { @class = "btn btn-info" })),
+                grid.Column(header: "Xóa", format: result => Html.ActionLink("Xóa", "DeleteProduct", new { id = result.SanPhamID }, htmlAttributes: new { onclick = "return confirm('Bạn có chắc chắn không ?');", @class = "btn btn-danger" }))
+)
+)
+</div>

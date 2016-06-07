@@ -1,0 +1,22 @@
+﻿@model ShoeShop.ViewModel.IndexViewModel
+@{
+    ViewBag.Title = "Trang Chủ";
+    Layout = "~/Views/Shared/_ShoeLayout.cshtml";
+}
+@section headBanner{
+    @Html.Partial("_HeadBannerPartial")
+}
+@*@section content{
+    @Html.Partial("_ContentPartial")
+}*@
+@section exam{
+    @{ Html.RenderPartial("_ExamProductPartial", Model.Exams);}
+}
+@section popular{
+   @{ Html.RenderPartial("_PopularPartial", Model.Populars);}
+}
+@section brand{
+    @Html.Partial("_BrandPartial")
+}
+
+

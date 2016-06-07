@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ShoesDbModelStoreContainer" CdmEntityContainer="ShoesDbContext">
+    <EntitySetMapping Name="DonHangs">
+      <EntityTypeMapping TypeName="ShoesDbModel.DonHang">
+        <MappingFragment StoreEntitySet="DonHang">
+          <ScalarProperty Name="DonHangID" ColumnName="DonHangID" />
+          <ScalarProperty Name="NgayDatHang" ColumnName="NgayDatHang" />
+          <ScalarProperty Name="TenKhachHang" ColumnName="TenKhachHang" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="DaGiaoHang" ColumnName="DaGiaoHang" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DonHangChiTiets">
+      <EntityTypeMapping TypeName="ShoesDbModel.DonHangChiTiet">
+        <MappingFragment StoreEntitySet="DonHangChiTiet">
+          <ScalarProperty Name="DonHangID" ColumnName="DonHangID" />
+          <ScalarProperty Name="SanPhamSizeID" ColumnName="SanPhamSizeID" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+          <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KhuyenMais">
+      <EntityTypeMapping TypeName="ShoesDbModel.KhuyenMai">
+        <MappingFragment StoreEntitySet="KhuyenMai">
+          <ScalarProperty Name="KhuyenMaiID" ColumnName="KhuyenMaiID" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
+          <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+          <ScalarProperty Name="Mota" ColumnName="Mota" />
+          <ScalarProperty Name="GiamGia" ColumnName="GiamGia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Loais">
+      <EntityTypeMapping TypeName="ShoesDbModel.Loai">
+        <MappingFragment StoreEntitySet="Loai">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="ChungLoaiID" ColumnName="ChungLoaiID" />
+          <ScalarProperty Name="BiDanh" ColumnName="BiDanh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SanPhams">
+      <EntityTypeMapping TypeName="ShoesDbModel.SanPham">
+        <MappingFragment StoreEntitySet="SanPham">
+          <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
+          <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
+          <ScalarProperty Name="TenSanPham" ColumnName="TenSanPham" />
+          <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
+          <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="Mota" ColumnName="Mota" />
+          <ScalarProperty Name="LoaiID" ColumnName="LoaiID" />
+          <ScalarProperty Name="NhaSanXuat" ColumnName="NhaSanXuat" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="KhuyenMaiID" ColumnName="KhuyenMaiID" />
+          <ScalarProperty Name="BiDanh" ColumnName="BiDanh" />
+          <ScalarProperty Name="SoLanXem" ColumnName="SoLanXem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SanPhamHinhs">
+      <EntityTypeMapping TypeName="ShoesDbModel.SanPhamHinh">
+        <MappingFragment StoreEntitySet="SanPhamHinh">
+          <ScalarProperty Name="SanPhamHinhID" ColumnName="SanPhamHinhID" />
+          <ScalarProperty Name="TenHinh" ColumnName="TenHinh" />
+          <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
+          <ScalarProperty Name="ThuTuHienThi" ColumnName="ThuTuHienThi" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SanPhamSizes">
+      <EntityTypeMapping TypeName="ShoesDbModel.SanPhamSize">
+        <MappingFragment StoreEntitySet="SanPhamSize">
+          <ScalarProperty Name="SanPhamSizeID" ColumnName="SanPhamSizeID" />
+          <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
+          <ScalarProperty Name="SizeID" ColumnName="SizeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sizes">
+      <EntityTypeMapping TypeName="ShoesDbModel.Size">
+        <MappingFragment StoreEntitySet="Size">
+          <ScalarProperty Name="SizeID" ColumnName="SizeID" />
+          <ScalarProperty Name="MaSize" ColumnName="MaSize" />
+          <ScalarProperty Name="TenSize" ColumnName="TenSize" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuanTris">
+      <EntityTypeMapping TypeName="ShoesDbModel.QuanTri">
+        <MappingFragment StoreEntitySet="QuanTri">
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

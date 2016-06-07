@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ShoeShop.Models.Loai>
+@{
+    ViewBag.Title = "CategoryManage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@Html.ActionLink("Thêm chủng loại mới", "NewCat", null, new { @class = "btn btn-danger" })
+<div class="row well" style="margin:5%">
+    <div class="col-md-12">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên Chủng Loại</th>
+                    <th>Bí Danh</th>
+                    <th>
+                        Cập nhật/
+                        Xóa
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cat in Model)
+                {
+                    <tr>
+                        <th scope="row">@cat.ID</th>
+                        <td>@cat.Ten</td>
+                        <td>@cat.BiDanh</td>
+                        <td>
+                            @Html.ActionLink("Cập nhật", "EditCat", new { id = cat.ID }, new { @class = "btn btn-facebook" })
+                            @Html.ActionLink("Xóa", "DeleteCat", new { id = cat.ID }, htmlAttributes: new { onclick = "return confirm('Bạn có chắc chắn không ?');", @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+

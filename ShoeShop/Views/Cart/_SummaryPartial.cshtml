@@ -1,0 +1,33 @@
+﻿@model ShoeShop.ViewModel.CartModel
+<div class="mini-cart DefaultModule">
+    <div class="defaultTitle mini-cart-title">
+        <span>
+          
+        </span>
+    </div>
+    <div class="defaultContent mini-cart-content">
+        <div id="plist">
+            @if (Model == null || Model.Items.Count() == 0)
+            {
+                <div class="non-product">
+                    Chưa có sản phẩm!
+                </div>
+            }
+            else
+            {
+                <div class="cartQty">
+                    <span id="pInCart">
+                        Tổng số lượng:@Model.Items.Sum(p => p.SoLuong) <br />
+                        Tổng trị giá: @Model.Total().ToString("#,##0VND")
+                    </span>
+                </div>
+            }
+
+
+        </div>
+    </div>
+    <div class="clear defaultFooter mini-cart-footer">
+        <div>
+        </div>
+    </div>
+</div>
